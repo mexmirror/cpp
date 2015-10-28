@@ -1,0 +1,8 @@
+<testsuites>
+	<testsuite name="AllTests" tests="4">
+		<testcase classname="AllTests" name="testEqualString"/>
+		<testcase classname="AllTests" name="testTwoEqualStrings"/>
+		<testcase classname="AllTests" name="testUnequalString"/>
+		<testcase classname="AllTests" name="testInvalidInput"/>
+	</testsuite>
+</testsuites>
