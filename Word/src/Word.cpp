@@ -7,6 +7,7 @@
 
 #include "Word.h"
 #include <cctype>
+#include "Word.h"
 
 Word::Word() {
 	std::string currentContent {};
