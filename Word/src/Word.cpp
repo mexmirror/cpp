@@ -20,6 +20,9 @@ std::ostream & Word::print(std::ostream& out) const {
 
 
 std::istream & Word::read(std::istream& in) {
+	currentContent = "";
+	std::istream_iterator<char> it{};
+	char c;
 	if(in.eof()) {
 		in.setstate(std::ios::failbit | in.rdstate());
 	} if(in.good()) {
