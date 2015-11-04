@@ -9,10 +9,15 @@
 #define WORD_H_
 
 #include <iostream>
+#include <cctype>
+#include <iterator>
+#include <algorithm>
+
+
 
 class Word {
 
-	static std::string word{};
+	std::string currentContent{};
 	explicit Word(std::istream& in);
 
 public:
@@ -20,38 +25,43 @@ public:
 	std::istream & read(std::istream& in);
 	std::ostream & print(std::ostream& out) const;
 
-	bool operator<(Word const& rhs) const;
-
-	inline std::ostream& operator<<(std::ostream& out, Word const& w) {
-		w.print(out);
-		return out;
+	inline bool operator<(Word const& rhs) const {
+		std::string s1{}, s2{};
+		std::transform(begin(this->currentContent), end(this->currentContent), begin(s1), ::tolower);
+		std::transform(begin(rhs.currentContent), end(rhs.currentContent), begin(s1), ::tolower);
+		return s1 < s2;
 	}
 
-	inline std::istream& operator>>(std::istream& in, Word& w) {
-		w.read(in);
-		return in;
+	inline bool operator>(Word const& rhs) const{
+		return rhs < *this;
 	}
+
+	inline bool operator>=(Word const& rhs) const{
+		return !(*this < rhs);
+	}
+
+	inline bool operator<=(Word const& rhs) const{
+		return !(rhs < *this);
+	}
+
+	inline bool operator==(Word const& rhs) const{
+		return !(*this < rhs) && !(rhs < *this);
+	}
+
+	inline bool operator!=(Word const& rhs) const{
+		return !(*this == rhs);
+	}
+
 };
 
-
-inline bool operator>(Word const& lhs, Word const& rhs) const {
-	return rhs < lhs;
+inline std::ostream& operator<<(std::ostream& out, Word const& rhs) {
+	rhs.print(out);
+	return out;
 }
 
-inline bool operator>=(Word const& lhs, Word const& rhs) const {
-	return !(lhs < rhs);
-}
-
-inline bool operator<=(Word const& lhs, Word const& rhs) const {
-	return !(rhs < lhs);
-}
-
-inline bool operator==(Word const& lhs, Word const& rhs) const {
-	return !(lhs < rhs) && !(rhs < lhs);
-}
-
-inline bool operator!=(Word const& lhs, Word const& rhs) const {
-	return !(lhs == rhs);
+inline std::istream& operator>>(std::istream& in, Word & rhs) {
+	rhs.read(in);
+	return in;
 }
 
 

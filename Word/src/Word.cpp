@@ -13,16 +13,30 @@ Word::Word(std::istream& in) {
 };
 
 std::ostream & Word::print(std::ostream& out) const {
-	out << word;
+	out << currentContent;
 	return out;
 }
 
 std::istream & Word::read(std::istream& in) {
+	currentContent = "";
+	std::istream_iterator<char> it{};
+	char c;
 	if(in.eof()) {
 		in.setstate(std::ios::failbit | in.rdstate());
-	} if(in.good()) {
-		// TODO
+	}else if(in.good()) {
+		in >> c;
+		while(!isalpha(c)) {
+			in.ignore(1);
+		}
+		while(isalpha(c)) {
+			currentContent += c;
+			in >> c;
+		}
+		while(!isalpha(c)) {
+			in.ignore(1);
+		}
 	}
+	in.clear();
 
 	return in;
 }

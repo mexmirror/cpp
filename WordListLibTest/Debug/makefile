@@ -38,26 +38,26 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: WordListLib
+all: WordListLibTest
 
 dependents:
-	-cd /home/hsr/.workspace/WordList/Debug && $(MAKE) all
+	-cd /home/hsr/CPP_Testat2/cpp/WordListLib/Debug && $(MAKE) all
 
 # Tool invocations
-WordListLib: $(OBJS) $(USER_OBJS) /home/hsr/.workspace/WordList/Debug/libWordList.a
+WordListLibTest: $(OBJS) $(USER_OBJS) /home/hsr/CPP_Testat2/cpp/WordListLib/Debug/libWordListLib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L"/home/hsr/.workspace/WordList/Debug" -o "WordListLib" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"/home/hsr/CPP_Testat2/cpp/WordListLib/Debug" -o "WordListLibTest" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) WordListLib
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) WordListLibTest
 	-@echo ' '
 
 .PHONY: all clean dependents
 .SECONDARY:
-/home/hsr/.workspace/WordList/Debug/libWordList.a:
+/home/hsr/CPP_Testat2/cpp/WordListLib/Debug/libWordListLib.a:
 
 -include ../makefile.targets
