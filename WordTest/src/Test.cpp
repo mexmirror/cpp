@@ -4,6 +4,228 @@
 #include "cute_runner.h"
 #include "src/Word.h"
 
+void testSmallerAs() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word1 < word2);
+}
+
+void testSmallerAsNegative() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word2 < word1));
+}
+
+void testSmallerAsIgnoresCase() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word1 < word2);
+}
+
+void testLargerAs() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 > word1);
+}
+
+void testLargerAsNegative() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word1 > word2));
+}
+
+void testLargerAsIgnoresCase() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 > word1);
+}
+
+void testLargerEqualsAs() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 >= word1);
+}
+
+void testLargerEqualsAsNegative() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word1 >= word2));
+}
+
+void testLargerEqualsAsIgnoresCase() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 >= word1);
+}
+
+void testLargerEqualsAsWhenEquals() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"abc"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 >= word1);
+}
+
+void testLargerEqualsAsWhenEqualsIgnoresCase() {
+	std::istringstream in1 {"XYZ"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 >= word1);
+}
+
+
+void testSmallerEqualsAs() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word1 <= word2);
+}
+
+void testSmallerEqualsAsNegative() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word2 <= word1));
+}
+
+void testSmallerEqualsAsIgnoresCase() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word1 <= word2);
+}
+
+void testSmallerEqualsAsWhenEquals() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"abc"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 <= word1);
+}
+
+void testSmallerEqualsAsWhenEqualsIgnoresCase() {
+	std::istringstream in1 {"XYZ"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 <= word1);
+}
+
+void testEquals() {
+	std::istringstream in1 {"xyz"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 == word1);
+}
+
+void testEqualsNegative() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"xyz"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word2 == word1));
+}
+
+void testEqualsIgnoreCase() {
+	std::istringstream in1 {"xyz"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 == word1);
+}
+
+void testUnequals() {
+	std::istringstream in1 {"xyz"};
+	std::istringstream in2 {"abc"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(word2 != word1);
+}
+
+void testUnequalsNegative() {
+	std::istringstream in1 {"abc"};
+	std::istringstream in2 {"abc"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word2 != word1));
+}
+
+void testUnequalsIgnoreCase() {
+	std::istringstream in1 {"xyz"};
+	std::istringstream in2 {"XYZ"};
+	Word word1{};
+	Word word2{};
+	in1 >> word1;
+	in2 >> word2;
+	ASSERT(!(word2 != word1));
+}
+
+
 void testDoesntReadGarbageFROMSTDString() {
 	std::string s{"'''--"};
 	std::ostringstream os{};
@@ -159,6 +381,28 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testDoesntConstructFromEmptyString));
 	s.push_back(CUTE(testReadsFromSTDString));
 	s.push_back(CUTE(testDoesntReadGarbageFROMSTDString));
+	s.push_back(CUTE(testUnequalsIgnoreCase));
+	s.push_back(CUTE(testUnequalsNegative));
+	s.push_back(CUTE(testUnequals));
+	s.push_back(CUTE(testEqualsIgnoreCase));
+	s.push_back(CUTE(testEqualsNegative));
+	s.push_back(CUTE(testEquals));
+	s.push_back(CUTE(testSmallerEqualsAsWhenEqualsIgnoresCase));
+	s.push_back(CUTE(testSmallerEqualsAsWhenEquals));
+	s.push_back(CUTE(testSmallerEqualsAsIgnoresCase));
+	s.push_back(CUTE(testSmallerEqualsAsNegative));
+	s.push_back(CUTE(testSmallerEqualsAs));
+	s.push_back(CUTE(testLargerEqualsAsWhenEqualsIgnoresCase));
+	s.push_back(CUTE(testLargerEqualsAsWhenEquals));
+	s.push_back(CUTE(testLargerEqualsAsIgnoresCase));
+	s.push_back(CUTE(testLargerEqualsAsNegative));
+	s.push_back(CUTE(testLargerEqualsAs));
+	s.push_back(CUTE(testLargerAsIgnoresCase));
+	s.push_back(CUTE(testLargerAsNegative));
+	s.push_back(CUTE(testLargerAs));
+	s.push_back(CUTE(testSmallerAsIgnoresCase));
+	s.push_back(CUTE(testSmallerAsNegative));
+	s.push_back(CUTE(testSmallerAs));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
