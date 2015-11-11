@@ -1,0 +1,44 @@
+<testsuites>
+	<testsuite name="AllTests" tests="12">
+		<testcase classname="AllTests" name="complicatedTest">
+			<failure message="..\src\Test.cpp:114 complicatedTest: &quot;compl, tely, weird, matted, in, put, &quot; == os.str() expected:	compl, tely, weird, matted, in, put, 	but was:		">
+complicatedTest: &quot;compl, tely, weird, matted, in, put, &quot; == os.str() expected:	compl, tely, weird, matted, in, put, 	but was:		
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testSeperateWordsFromGarbage">
+			<failure message="..\src\Test.cpp:15 testSeperateWordsFromGarbage: &quot;MausMoritzMagJeder&quot; == os.str() expected:	MausMoritzMagJeder	but was:		">
+testSeperateWordsFromGarbage: &quot;MausMoritzMagJeder&quot; == os.str() expected:	MausMoritzMagJeder	but was:		
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testExtracsWordFromGarbage">
+			<failure message="..\src\Test.cpp:24 testExtracsWordFromGarbage: &quot;test&quot; == os.str() expected:	test	but was:		">
+testExtracsWordFromGarbage: &quot;test&quot; == os.str() expected:	test	but was:		
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testReadsSingleWord">
+			<failure message="..\src\Test.cpp:33 testReadsSingleWord: &quot;test&quot; == os.str() expected:	test	but was:	tes	">
+testReadsSingleWord: &quot;test&quot; == os.str() expected:	test	but was:	tes	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testIgnoresLinebrake">
+			<failure message="..\src\Test.cpp:44 testIgnoresLinebrake: &quot;abik&quot; == os.str() expected:	abik	but was:		">
+testIgnoresLinebrake: &quot;abik&quot; == os.str() expected:	abik	but was:		
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testIgnoresTabs">
+			<failure message="..\src\Test.cpp:55 testIgnoresTabs: &quot;abik&quot; == os.str() expected:	abik	but was:		">
+testIgnoresTabs: &quot;abik&quot; == os.str() expected:	abik	but was:		
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testIgnoresWhiteSpace">
+			<failure message="..\src\Test.cpp:66 testIgnoresWhiteSpace: &quot;abik&quot; == os.str() expected:	abik	but was:		">
+testIgnoresWhiteSpace: &quot;abik&quot; == os.str() expected:	abik	but was:		
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="testSetsFailBit"/>
+		<testcase classname="AllTests" name="testEmptyInputStreamResult"/>
+		<testcase classname="AllTests" name="testEmptyInputResult"/>
+		<testcase classname="AllTests" name="testForFailBit"/>
+		<testcase classname="AllTests" name="testDoesntReadGarbage"/>
+	</testsuite>
+</testsuites>
