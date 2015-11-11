@@ -1,13 +1,22 @@
+/*
+ * Word.cpp
+ *
+ *  Created on: 28.10.2015
+ *      Author: hsr
+ */
+
 #include "Word.h"
 #include <cctype>
 
 Word::Word() {
 	std::string currentContent {};
 }
+
 std::ostream & Word::print(std::ostream& out) const {
 	out << currentContent;
 	return out;
 }
+
 
 std::istream & Word::read(std::istream& in) {
 	if(in.eof()) {
