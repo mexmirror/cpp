@@ -18,10 +18,10 @@
 class Word {
 
 	std::string currentContent{};
-	explicit Word(std::istream& in);
 
 public:
 
+	Word();
 	std::istream & read(std::istream& in);
 	std::ostream & print(std::ostream& out) const;
 

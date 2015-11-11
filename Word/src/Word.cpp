@@ -7,9 +7,8 @@
 
 #include "Word.h"
 
-Word::Word(std::istream& in) {
-	read(in);
-	if(in.fail()) throw std::out_of_range{"invalid word"};
+Word::Word() {
+	std::string currentContent{};
 };
 
 std::ostream & Word::print(std::ostream& out) const {
@@ -19,24 +18,22 @@ std::ostream & Word::print(std::ostream& out) const {
 
 std::istream & Word::read(std::istream& in) {
 	currentContent = "";
-	std::istream_iterator<char> it{};
-	char c;
+
 	if(in.eof()) {
 		in.setstate(std::ios::failbit | in.rdstate());
-	}else if(in.good()) {
-		in >> c;
-		while(!isalpha(c)) {
-			in.ignore(1);
-		}
-		while(isalpha(c)) {
-			currentContent += c;
-			in >> c;
-		}
-		while(!isalpha(c)) {
-			in.ignore(1);
-		}
 	}
-	in.clear();
+
+	while(in.good() && !isalpha(in.peek())) {
+		in.ignore(1);
+	}
+
+	while(in.good() && isalpha(in.peek())) {
+		currentContent += in.get();
+	}
+
+	if(!in) {
+		in.clear();
+	}
 
 	return in;
 }
