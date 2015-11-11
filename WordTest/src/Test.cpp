@@ -1,8 +1,8 @@
+#include "Word.h"
 #include "cute.h"
 #include "ide_listener.h"
 #include "xml_listener.h"
 #include "cute_runner.h"
-#include "src/Word.h"
 
 void testSmallerAs() {
 	std::istringstream in1 {"abc"};
@@ -361,6 +361,7 @@ void complicatedTest() {
 		os << word << ", ";
 	}
 	ASSERT_EQUAL("compl, tely, weird, matted, in, put, ", os.str());
+
 
 }
 
