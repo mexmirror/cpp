@@ -24,43 +24,31 @@ public:
 
 	std::istream & read(std::istream& in);
 	std::ostream & print(std::ostream& out) const;
-
-	inline bool operator<(Word const& rhs) const {
-		std::string s1{}, s2{};
-		std::transform(begin(this->currentContent), end(this->currentContent), begin(s1), ::tolower);
-		std::transform(begin(rhs.currentContent), end(rhs.currentContent), begin(s1), ::tolower);
-		return s1 < s2;
-	}
-
-	inline bool operator>(Word const& rhs) const{
-		return rhs < *this;
-	}
-
-	inline bool operator>=(Word const& rhs) const{
-		return !(*this < rhs);
-	}
-
-	inline bool operator<=(Word const& rhs) const{
-		return !(rhs < *this);
-	}
-
-	inline bool operator==(Word const& rhs) const{
-		return !(*this < rhs) && !(rhs < *this);
-	}
-
-	inline bool operator!=(Word const& rhs) const{
-		return !(*this == rhs);
-	}
-
+	bool operator<(Word const& rhs) const;
 };
 
-inline std::ostream& operator<<(std::ostream& out, Word const& rhs) {
-	rhs.print(out);
+inline bool operator>(Word const & lhs, Word const & rhs) {
+     return rhs < lhs;
+}
+inline bool operator>=(Word const & lhs, Word const & rhs) {
+     return!(lhs < rhs);
+}
+inline bool operator<=(Word const & lhs, Word const & rhs) {
+     return!(rhs < lhs);
+}
+inline bool operator==(Word const & lhs, Word const & rhs) {
+     return!(lhs < rhs) && !(rhs < lhs);
+}
+inline bool operator!=(Word const & lhs, Word const & rhs) {
+     return!(lhs == rhs);
+}
+inline std::ostream& operator<<(std::ostream& out, Word const& word) {
+	word.print(out);
 	return out;
 }
 
-inline std::istream& operator>>(std::istream& in, Word & rhs) {
-	rhs.read(in);
+inline std::istream& operator>>(std::istream& in, Word & word) {
+	word.read(in);
 	return in;
 }
 
