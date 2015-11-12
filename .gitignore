@@ -30,3 +30,4 @@
 .cproject
 .project
 .settings/
+*[T|t]est/*.xml
