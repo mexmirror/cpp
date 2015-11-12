@@ -31,3 +31,5 @@
 .project
 .settings/
 *[T|t]est/*.xml
+*/Debug/
+*/Release/
