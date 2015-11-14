@@ -1,10 +1,3 @@
-/*
- * Word.cpp
- *
- *  Created on: 28.10.2015
- *      Author: hsr
- */
-
 #include "Word.h"
 #include <cctype>
 #include <iterator>
@@ -26,7 +19,7 @@ bool Word::operator <(Word const& rhs) const{
 }
 std::istream & Word::read(std::istream& in) {
 	if(in.eof()) {
-		in.setstate(std::ios::failbit | in.rdstate());
+		in.setstate(in.failbit);
 	} if(in.good()) {
 		std::string temp {};
 		char c {};
