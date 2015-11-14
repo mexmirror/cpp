@@ -227,7 +227,7 @@ void testUnequalsIgnoreCase() {
 
 
 void testDoesntReadGarbageFROMSTDString() {
-	std::string s{"'''--"};
+	std::istringstream s{"'''--"};
 	std::ostringstream os{};
 	Word word;
 	s >> word;
@@ -236,7 +236,7 @@ void testDoesntReadGarbageFROMSTDString() {
 }
 
 void testReadsFromSTDString() {
-	std::string s{"hello"};
+	std::istringstream s{"hello"};
 	std::ostringstream os {};
 	Word word;
 	s >> word;
@@ -257,7 +257,7 @@ void testSeperateWordsFromGarbage() {
 	std::istringstream in {"Maus!!//Moritz283Mag][-Jeder[[``"};
 	std::ostringstream os {};
 	Word word{};
-	while(!in.eofbit) {
+	while(in) {
 		in >> word;
 		os << word;
 	}
@@ -286,7 +286,7 @@ void testIgnoresLinebrake() {
 	std::istringstream in {"		ab	\n ik"};
 	std::ostringstream os {};
 	Word word{};
-	while(!in.eofbit) {
+	while(in) {
 		in >> word;
 		os << word;
 	}
@@ -297,7 +297,7 @@ void testIgnoresTabs() {
 	std::istringstream in {"		ab	\t ik"};
 	std::ostringstream os {};
 	Word word{};
-	while(!in.eofbit) {
+	while(in) {
 		in >> word;
 		os << word;
 	}
@@ -308,7 +308,7 @@ void testIgnoresWhiteSpace() {
 	std::istringstream in {"                ab             ik"};
 	std::ostringstream os {};
 	Word word{};
-	while(!in.eofbit) {
+	while(in) {
 		in >> word;
 		os << word;
 	}
@@ -356,7 +356,7 @@ void complicatedTest() {
 	std::istringstream in {"compl33tely ~ weird !!??!! 4matted in_put"};
 	std::ostringstream os {};
 	Word word{};
-	while(!in.eofbit) {
+	while(in) {
 		in >> word;
 		os << word << ", ";
 	}
