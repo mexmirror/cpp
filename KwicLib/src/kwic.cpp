@@ -48,7 +48,7 @@ std::vector<std::vector<Word>> getLines(std::istream &in) {
 	return lines;
 }
 
-void printLines(std::set<std::vector<Word>, bool(*)(std::vector<Word>, std::vector<Word>)> lines, std::ostream &out) {
+void printLines(std::set<std::string, bool(*)(std::string, std::string)> lines, std::ostream &out) {
 	for_each(cbegin(lines), cend(lines), [&out](std::vector<Word> line) {
 		for_each(cbegin(line), cend(line), [&out] (Word word) {
 			out << word << " ";
@@ -61,6 +61,6 @@ void kwic(std::istream &in, std::ostream &out) {
 	lines = getLines(in);
 	std::vector<std::vector<Word>> rotations{};
 	rotations = getRotations(lines);
-	std::set<std::vector<Word>, bool(*)(std::vector<Word>, std::vector<Word>)> sortedLines{cbegin(rotations), cend(rotations), sortRotationsFunction};
+	std::set<std::string, bool(*)(std::string, std::string)> sortedLines{cbegin(rotations), cend(rotations), sortRotationsFunction};
 	printLines(sortedLines, out);
 }

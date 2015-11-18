@@ -2,6 +2,8 @@
 #include <cctype>
 #include <iterator>
 #include <algorithm>
+#include <string>
+#include <iostream>
 
 Word::Word() {
 	std::string currentContent {};
@@ -11,10 +13,12 @@ std::ostream & Word::print(std::ostream& out) const {
 	out << currentContent;
 	return out;
 }
-bool Word::operator <(Word const& rhs) const{
+bool Word::operator<(Word const& rhs) const{
 	std::string s1 {}, s2 {};
-	std::transform(begin(currentContent), end(currentContent), begin(s1), ::tolower);
-	std::transform(begin(rhs.currentContent), end(rhs.currentContent),begin(s2), ::tolower);
+	std::transform(currentContent.cbegin(), currentContent.cend(), back_inserter(s1), [](char c){return std::tolower(c);});
+	std::transform(begin(rhs.currentContent), end(rhs.currentContent), back_inserter(s2), ::tolower);
+	std::cout << s1;
+	std::cout << s2;
 	return s1 < s2;
 }
 std::istream & Word::read(std::istream& in) {
