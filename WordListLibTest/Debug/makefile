@@ -41,7 +41,7 @@ endif
 all: WordListLibTest
 
 dependents:
-	-cd /home/hsr/CPP_Testat2/cpp/WordListLib/Debug && $(MAKE) all
+	-cd /home/hsr/CPP_Testat2/cpp/WordListLib/Debug && $(MAKE) clean all
 
 # Tool invocations
 WordListLibTest: $(OBJS) $(USER_OBJS) /home/hsr/CPP_Testat2/cpp/WordListLib/Debug/libWordListLib.a
