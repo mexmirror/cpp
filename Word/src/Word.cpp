@@ -3,7 +3,6 @@
 #include <iterator>
 #include <algorithm>
 #include <string>
-#include <iostream>
 
 Word::Word() {
 	std::string currentContent {};
@@ -17,8 +16,6 @@ bool Word::operator<(Word const& rhs) const{
 	std::string s1 {}, s2 {};
 	std::transform(currentContent.cbegin(), currentContent.cend(), back_inserter(s1), [](char c){return std::tolower(c);});
 	std::transform(begin(rhs.currentContent), end(rhs.currentContent), back_inserter(s2), ::tolower);
-	std::cout << s1;
-	std::cout << s2;
 	return s1 < s2;
 }
 std::istream & Word::read(std::istream& in) {
