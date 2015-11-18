@@ -3,11 +3,18 @@
 #include <iterator>
 #include <algorithm>
 #include <string>
+#include <iostream>
+#include <sstream>
+
 
 Word::Word() {
 	std::string currentContent {};
 }
-
+Word::Word(std::string &word){
+	std::string currentContent {};
+	std::istringstream is {word};
+	is >> *this;
+}
 std::ostream & Word::print(std::ostream& out) const {
 	out << currentContent;
 	return out;
@@ -32,13 +39,11 @@ std::istream & Word::read(std::istream& in) {
 				break;
 			}
 		}
-
 		if(!temp.empty()) {
 			currentContent = temp;
 		} else {
 			in.setstate(in.failbit);
 		}
-
 		return in;
 	}
 	return in;
