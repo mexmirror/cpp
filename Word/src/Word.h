@@ -21,6 +21,7 @@ class Word {
 
 public:
 	Word();
+	Word(std::string &word);
 	std::istream & read(std::istream& in);
 	std::ostream & print(std::ostream& out) const;
 	bool operator<(Word const& rhs) const;

@@ -1,7 +1,5 @@
 #include "Word.h"
-
 #include "kwic.h"
-
 #include <sstream>
 #include <iostream>
 #include <vector>

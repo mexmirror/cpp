@@ -1,9 +1,9 @@
+#include "Word.h"
+#include "kwic.h"
 #include "cute.h"
 #include "ide_listener.h"
 #include "xml_listener.h"
 #include "cute_runner.h"
-#include "src/word.h"
-#include "src/kwic.h"
 
 
 void extensiveTest() {
