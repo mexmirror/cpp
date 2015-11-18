@@ -365,6 +365,13 @@ void testStringInConstructor(){
 	os << word;
 	ASSERT_EQUAL(str, os.str());
 }
+void testWrongStringInConstructor(){
+	std::string str {"Die Maus ist im Haus"};
+	std::ostringstream os {};
+	Word word(str);
+	os << word;
+	ASSERT_EQUAL("Die", os.str());
+}
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
@@ -406,6 +413,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testSmallerAsNegative));
 	s.push_back(CUTE(testSmallerAs));
 	s.push_back(CUTE(testStringInConstructor));
+	s.push_back(CUTE(testWrongStringInConstructor));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
