@@ -19,10 +19,18 @@ void testRotatesOneLine() {
 	kwic(s, os);
 	ASSERT_EQUAL("a test this is\nis a test this\ntest this is a\nthis is a test", os.str());
 }
+
+void testSimpleCase() {
+	std::istringstream s{"is a"};
+	std::ostringstream os{};
+	kwic(s, os);
+	ASSERT_EQUAL("a is\nis a", os.str());
+}
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(extensiveTest));
 	s.push_back(CUTE(testRotatesOneLine));
+	s.push_back(CUTE(testSimpleCase));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
