@@ -17,14 +17,14 @@ void testRotatesOneLine() {
 	std::istringstream s{"this is a test"};
 	std::ostringstream os{};
 	kwic(s, os);
-	ASSERT_EQUAL("a test this is \nis a test this \ntest this is a\n this is a test", os.str());
+	ASSERT_EQUAL("a test this is \nis a test this \ntest this is a \nthis is a test \n", os.str());
 }
 
 void testSimpleCase() {
 	std::istringstream s{"is a"};
 	std::ostringstream os{};
 	kwic(s, os);
-	ASSERT_EQUAL("a is \nis a ", os.str());
+	ASSERT_EQUAL("a is \nis a \n", os.str());
 }
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;

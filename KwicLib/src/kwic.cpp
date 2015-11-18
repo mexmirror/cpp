@@ -38,7 +38,6 @@ std::vector<std::vector<Word>> getRotations(std::vector<std::vector<Word>> lines
 std::vector<std::vector<Word>> getLines(std::istream &in) {
 	std::string currentLine{};
 	std::vector<std::vector<Word>> lines;
-
 	while(std::getline(in, currentLine)) {
 		lines.push_back(getWords(currentLine));
 	}
