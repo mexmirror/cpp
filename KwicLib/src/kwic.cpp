@@ -23,7 +23,9 @@ std::vector<std::vector<Word>> getRotations(std::vector<std::vector<Word>> const
 	for_each(cbegin(lines), cend(lines), [&rotations](std::vector<Word> const line) {
 		for(unsigned int i = 0; i < line.size(); i++) {
 			std::vector<Word> rotationLine{};
-			std::rotate_copy(cbegin(line), cbegin(line) + i, cend(line), back_inserter(rotationLine));
+			std::rotate_copy(
+					cbegin(line), cbegin(line) + i,
+					cend(line), back_inserter(rotationLine));
 			rotations.push_back(rotationLine);
 		}
 	});
