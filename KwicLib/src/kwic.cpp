@@ -10,18 +10,17 @@
 #include <set>
 
 
-std::vector<Word> getWords(std::string currentLine) {
+std::vector<Word> getWords(std::string const currentLine) {
 	std::istringstream line{currentLine};
-	std::istream_iterator<Word> eof {};
+	std::istream_iterator<Word> const eof {};
 	std::istream_iterator<Word> it {line};
-
-	std::vector<Word> words{it, eof};
+	std::vector<Word> const words{it, eof};
 	return words;
 }
 
-std::vector<std::vector<Word>> getRotations(std::vector<std::vector<Word>> lines) {
+std::vector<std::vector<Word>> getRotations(std::vector<std::vector<Word>> const lines) {
 	std::vector<std::vector<Word>> rotations{};
-	for_each(cbegin(lines), cend(lines), [&rotations](std::vector<Word> line) {
+	for_each(cbegin(lines), cend(lines), [&rotations](std::vector<Word> const line) {
 		for(unsigned int i = 0; i < line.size(); i++) {
 			std::vector<Word> rotationLine{};
 			std::rotate_copy(cbegin(line), cbegin(line) + i, cend(line), back_inserter(rotationLine));
@@ -40,7 +39,7 @@ std::vector<std::vector<Word>> getLines(std::istream &in) {
 	return lines;
 }
 
-void printLines(std::set<std::vector<Word>> lines, std::ostream &out) {
+void printLines(std::set<std::vector<Word>> const lines, std::ostream &out) {
 	std::ostream_iterator<Word> os(out, " ");
 	for_each(cbegin(lines), cend(lines), [&out, &os](std::vector<Word> line) {
 		copy(cbegin(line), cend(line), os);
@@ -48,8 +47,8 @@ void printLines(std::set<std::vector<Word>> lines, std::ostream &out) {
 	});
 }
 void kwic(std::istream &in, std::ostream &out) {
-	auto lines = getLines(in);
-	auto rotations = getRotations(lines);
-	std::set<std::vector<Word>> sortedLines{cbegin(rotations), cend(rotations)};
+	auto const lines = getLines(in);
+	auto const rotations = getRotations(lines);
+	std::set<std::vector<Word>> const sortedLines{cbegin(rotations), cend(rotations)};
 	printLines(sortedLines, out);
 }
