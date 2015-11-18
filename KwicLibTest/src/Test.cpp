@@ -1,5 +1,5 @@
-#include "src\Word.h"
-#include "src\kwic.h"
+#include "Word.h"
+#include "kwic.h"
 #include "cute.h"
 #include "ide_listener.h"
 #include "xml_listener.h"

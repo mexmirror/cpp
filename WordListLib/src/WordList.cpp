@@ -1,10 +1,10 @@
 #include "WordList.h"
-#include<set>
-#include<string>
-#include<istream>
-#include<ostream>
-#include<algorithm>
-#include<iterator>
+#include <set>
+#include <string>
+#include <istream>
+#include <ostream>
+#include <algorithm>
+#include <iterator>
 #include <cctype>
 
 void wlist(std::istream& in, std::ostream& out){

@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iterator>
-#include<set>
+#include <set>
 
 
 bool sortRotationsFunction (std::vector<Word> i, std::vector<Word> j) {
