@@ -373,6 +373,11 @@ void testWrongStringInConstructor(){
 	ASSERT_EQUAL("Die", os.str());
 }
 
+void testInvalidStringForConstructor() {
+	std::string str{"!!//??    %%&&"};
+	ASSERT_THROWS(Word word{str};, std::invalid_argument);
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(complicatedTest));
@@ -414,6 +419,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testSmallerAs));
 	s.push_back(CUTE(testStringInConstructor));
 	s.push_back(CUTE(testWrongStringInConstructor));
+	s.push_back(CUTE(testInvalidStringForConstructor));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

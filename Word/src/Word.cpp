@@ -13,13 +13,16 @@ Word::Word(std::string &word){
 	std::string currentContent {};
 	std::istringstream is {word};
 	is >> *this;
+	if(this->currentContent.empty()) {
+		throw std::invalid_argument("Invalid string");
+	}
 }
 std::ostream & Word::print(std::ostream& out) const {
 	out << currentContent;
 	return out;
 }
 
-bool charCaseLess(std::string const &lhs, std::string const &rhs){
+bool charCaseLess(std::string const &lhs, std::string const &rhs) {
 	return std::lexicographical_compare(
 			begin(lhs), end(lhs), begin(rhs), end(rhs),
 			[](char l, char r) {
@@ -30,7 +33,6 @@ bool charCaseLess(std::string const &lhs, std::string const &rhs){
 bool Word::operator<(Word const& rhs) const{
 	return charCaseLess(currentContent, rhs.currentContent);
 }
-
 
 std::istream & Word::read(std::istream& in) {
 	if(in.eof()) {
@@ -55,3 +57,4 @@ std::istream & Word::read(std::istream& in) {
 	}
 	return in;
 }
+
