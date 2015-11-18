@@ -257,8 +257,7 @@ void testSeperateWordsFromGarbage() {
 	std::istringstream in {"Maus!!//Moritz283Mag][-Jeder[[``"};
 	std::ostringstream os {};
 	Word word{};
-	while(in) {
-		in >> word;
+	while(in >> word) {
 		os << word;
 	}
 	ASSERT_EQUAL("MausMoritzMagJeder", os.str());
@@ -286,8 +285,7 @@ void testIgnoresLinebrake() {
 	std::istringstream in {"		ab	\n ik"};
 	std::ostringstream os {};
 	Word word{};
-	while(in) {
-		in >> word;
+	while(in >> word) {
 		os << word;
 	}
 	ASSERT_EQUAL("abik", os.str());
@@ -297,8 +295,7 @@ void testIgnoresTabs() {
 	std::istringstream in {"		ab	\t ik"};
 	std::ostringstream os {};
 	Word word{};
-	while(in) {
-		in >> word;
+	while(in >> word) {
 		os << word;
 	}
 	ASSERT_EQUAL("abik", os.str());
@@ -308,8 +305,7 @@ void testIgnoresWhiteSpace() {
 	std::istringstream in {"                ab             ik"};
 	std::ostringstream os {};
 	Word word{};
-	while(in) {
-		in >> word;
+	while(in >> word) {
 		os << word;
 	}
 	ASSERT_EQUAL("abik", os.str());
@@ -356,8 +352,7 @@ void complicatedTest() {
 	std::istringstream in {"compl33tely ~ weird !!??!! 4matted in_put"};
 	std::ostringstream os {};
 	Word word{};
-	while(in) {
-		in >> word;
+	while(in >> word) {
 		os << word << ", ";
 	}
 	ASSERT_EQUAL("compl, tely, weird, matted, in, put, ", os.str());
@@ -404,6 +399,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testSmallerAsIgnoresCase));
 	s.push_back(CUTE(testSmallerAsNegative));
 	s.push_back(CUTE(testSmallerAs));
+	s.push_back(CUTE(testStringConstructor));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
