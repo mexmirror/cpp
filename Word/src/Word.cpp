@@ -6,7 +6,6 @@
 #include <iostream>
 #include <sstream>
 
-
 Word::Word() {
 	std::string currentContent {};
 }
@@ -19,12 +18,20 @@ std::ostream & Word::print(std::ostream& out) const {
 	out << currentContent;
 	return out;
 }
-bool Word::operator<(Word const& rhs) const{
-	std::string s1 {}, s2 {};
-	std::transform(currentContent.cbegin(), currentContent.cend(), back_inserter(s1), [](char c){return std::tolower(c);});
-	std::transform(begin(rhs.currentContent), end(rhs.currentContent), back_inserter(s2), ::tolower);
-	return s1 < s2;
+
+bool charCaseLess(std::string const &lhs, std::string const &rhs){
+	return std::lexicographical_compare(
+			begin(lhs), end(lhs), begin(rhs), end(rhs),
+			[](char l, char r) {
+		return std::tolower(l) < std::tolower(r);
+	});
 }
+
+bool Word::operator<(Word const& rhs) const{
+	return charCaseLess(currentContent, rhs.currentContent);
+}
+
+
 std::istream & Word::read(std::istream& in) {
 	if(in.eof()) {
 		in.setstate(in.failbit);
