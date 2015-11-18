@@ -356,8 +356,14 @@ void complicatedTest() {
 		os << word << ", ";
 	}
 	ASSERT_EQUAL("compl, tely, weird, matted, in, put, ", os.str());
+}
 
-
+void testStringInConstructor(){
+	std::string str {"Maus"};
+	std::ostringstream os {};
+	Word word{str};
+	os << word;
+	ASSERT_EQUAL(str, os.str());
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -399,7 +405,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testSmallerAsIgnoresCase));
 	s.push_back(CUTE(testSmallerAsNegative));
 	s.push_back(CUTE(testSmallerAs));
-	s.push_back(CUTE(testStringConstructor));
+	s.push_back(CUTE(testStringInConstructor));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
