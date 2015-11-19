@@ -315,14 +315,14 @@ void testSetsFailBit() {
 	std::istringstream in {"!!"};
 	Word word {};
 	in >> word;
-	ASSERT(in.failbit);
+	ASSERT(in.fail());
 }
 
 void testEmptyInputStreamResult() {
 	std::istringstream in {""};
 	Word word{};
 	in >> word;
-	ASSERT(in.eofbit);
+	ASSERT(in.eof());
 }
 void testEmptyInputResult() {
 	std::istringstream in {""};
@@ -337,7 +337,7 @@ void testForFailBit() {
 	std::istringstream in {"22"};
 	Word word{};
 	in >> word;
-	ASSERT(in.eofbit);
+	ASSERT(in.eof());
 }
 
 void testDoesntReadGarbage() {
