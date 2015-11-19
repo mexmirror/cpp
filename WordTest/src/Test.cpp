@@ -226,7 +226,7 @@ void testUnequalsIgnoreCase() {
 }
 
 
-void testDoesntReadGarbageFROMSTDString() {
+void testDoesntReadGarbageFromString() {
 	std::istringstream s{"'''--"};
 	std::ostringstream os{};
 	Word word;
@@ -235,7 +235,7 @@ void testDoesntReadGarbageFROMSTDString() {
 	ASSERT_EQUAL("", os.str());
 }
 
-void testReadsFromSTDString() {
+void testReadsFromString() {
 	std::istringstream s{"hello"};
 	std::ostringstream os {};
 	Word word;
@@ -393,8 +393,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testForFailBit));
 	s.push_back(CUTE(testDoesntReadGarbage));
 	s.push_back(CUTE(testDoesntConstructFromEmptyString));
-	s.push_back(CUTE(testReadsFromSTDString));
-	s.push_back(CUTE(testDoesntReadGarbageFROMSTDString));
+	s.push_back(CUTE(testReadsFromString));
+	s.push_back(CUTE(testDoesntReadGarbageFromString));
 	s.push_back(CUTE(testUnequalsIgnoreCase));
 	s.push_back(CUTE(testUnequalsNegative));
 	s.push_back(CUTE(testUnequals));
