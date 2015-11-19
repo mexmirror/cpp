@@ -14,7 +14,7 @@ class Word {
 
 public:
 	explicit Word();
-	explicit Word(std::string &word);
+	explicit Word(const std::string &word);
 	std::istream & read(std::istream& in);
 	std::ostream & print(std::ostream& out) const;
 	bool operator<(Word const& rhs) const;

@@ -9,9 +9,9 @@
 Word::Word() {
 	std::string currentContent {};
 }
-Word::Word(std::string &word){
+Word::Word(const std::string &string){
 	std::string currentContent {};
-	std::istringstream is {word};
+	std::istringstream is {string};
 	is >> *this;
 	if(this->currentContent.empty()) {
 		throw std::invalid_argument("Invalid string");
