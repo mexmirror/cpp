@@ -110,6 +110,15 @@ void testTabBetweenWords(){
 					"you May the force be with \n"
 					, os.str());
 }
+void testDuplicateWord(){
+	std::istringstream is {"Bond James Bond"};
+	std::ostringstream os {};
+	kwic(is, os);
+	ASSERT_EQUAL(	"Bond Bond James \n"
+					"Bond James Bond \n"
+					"James Bond Bond \n"
+					, os.str());
+}
 void testGarbage(){
 	std::istringstream is {"2390492423492309489023!!::::::...---;..."};
 	std::ostringstream os {};
@@ -129,6 +138,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testCaseSensitivity));
 	s.push_back(CUTE(testTabBetweenWords));
 	s.push_back(CUTE(testGarbage));
+	s.push_back(CUTE(testDuplicateWord));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
