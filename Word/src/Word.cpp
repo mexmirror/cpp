@@ -24,8 +24,8 @@ std::ostream & Word::print(std::ostream& out) const {
 
 bool charCaseLess(std::string const &lhs, std::string const &rhs) {
 	return std::lexicographical_compare(
-			begin(lhs), end(lhs), begin(rhs), end(rhs),
-			[](char l, char r) {
+			cbegin(lhs), cend(lhs), cbegin(rhs), cend(rhs),
+			[](char const l, char const r) {
 		return std::tolower(l) < std::tolower(r);
 	});
 }

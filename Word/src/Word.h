@@ -6,8 +6,6 @@
 #include <iterator>
 #include <algorithm>
 
-
-
 class Word {
 
 	std::string currentContent{};
@@ -45,4 +43,4 @@ inline std::istream& operator>>(std::istream& in, Word & word) {
 	return in;
 }
 
-#endif /* WORD_H_ */
+#endif
