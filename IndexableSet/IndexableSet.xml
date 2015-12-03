@@ -1,0 +1,11 @@
+<testsuites>
+	<testsuite name="AllTests" tests="7">
+		<testcase classname="AllTests" name="testIndexableSet"/>
+		<testcase classname="AllTests" name="testFront"/>
+		<testcase classname="AllTests" name="testBack"/>
+		<testcase classname="AllTests" name="testCompareCaseless"/>
+		<testcase classname="AllTests" name="testIndexAccess"/>
+		<testcase classname="AllTests" name="testOutOfRange"/>
+		<testcase classname="AllTests" name="testNegativeOutOfRange"/>
+	</testsuite>
+</testsuites>

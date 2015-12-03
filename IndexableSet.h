@@ -16,16 +16,16 @@ public:
 
 	T const & at(size_type index) const {
 		auto it = this->begin();
-		if(index < 0) {
-			index = this->size() + index;
-		}
 		std::advance(it, index);
 		return *it;
 	}
 
 	T const & operator[](size_type index) const {
 		if(this->size() < std::abs(index)) {
-			throw std::out_of_range("Index out of range");
+			throw std::out_of_range("Out of range index");
+		}
+		if(index < 0) {
+			return this->at(this->size() + index);
 		}
 		return this->at(index);
 	}
@@ -40,13 +40,7 @@ public:
 
 };
 
-struct caselessCompare{
-	bool operator()(const std::string& left, const std::string& right){
-		return std::lexicographical_compare(cbegin(left),
-				cend(left), cbegin(right),
-				cend(right),[](char const l, char const r) {
-					return std::tolower(l) < std::tolower(r);
-				});
-	}
-};
+
+
+
 #endif /* INDEXABLESET_H_ */
