@@ -4,6 +4,7 @@
 #include <set>
 #include <stdexcept>
 #include <cmath>
+#include <iostream>
 
 template<typename T, typename COMPARE=std::less<T>>
 class indexableSet
@@ -14,7 +15,7 @@ public:
 	using size_type=typename Base::size_type;
 	using Base::set;
 
-	T const & at(size_type index) const {
+	T const & at(int index) const {
 		auto it = this->begin();
 		if(index < 0) {
 			index = this->size() + index;
