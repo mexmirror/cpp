@@ -1,5 +1,5 @@
 <testsuites>
-	<testsuite name="AllTests" tests="7">
+	<testsuite name="AllTests" tests="8">
 		<testcase classname="AllTests" name="testIndexableSet"/>
 		<testcase classname="AllTests" name="testFront"/>
 		<testcase classname="AllTests" name="testBack"/>
@@ -7,5 +7,6 @@
 		<testcase classname="AllTests" name="testIndexAccess"/>
 		<testcase classname="AllTests" name="testOutOfRange"/>
 		<testcase classname="AllTests" name="testNegativeOutOfRange"/>
+		<testcase classname="AllTests" name="testNegativeIndex"/>
 	</testsuite>
 </testsuites>

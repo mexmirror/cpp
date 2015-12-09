@@ -16,6 +16,10 @@ void testBack(){
 	indexableSet<int> set {1,2,3,4,5,6};
 	ASSERT_EQUAL(6, set.back());
 }
+void testNegativeIndexAccess(){
+	indexableSet<int> set {1,2,3,4,5,6};
+	ASSERT_EQUAL(5, set[-2]);
+}
 void testIndexAccess(){
 	indexableSet<int> set {1,2,3,5,8,13};
 	ASSERT_EQUAL(5, set[3]);
@@ -42,6 +46,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testIndexAccess));
 	s.push_back(CUTE(testOutOfRange));
 	s.push_back(CUTE(testNegativeOutOfRange));
+	s.push_back(CUTE(testNegativeIndexAccess));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

@@ -16,6 +16,9 @@ public:
 	using Base::set;
 
 	T const & at(int index) const {
+		if(this->size() < std::abs(index)) {
+			throw std::out_of_range("Index out of range");
+		}
 		auto it = this->begin();
 		if(index < 0) {
 			index = this->size() + index;
@@ -25,9 +28,6 @@ public:
 	}
 
 	T const & operator[](size_type index) const {
-		if(this->size() < std::abs(index)) {
-			throw std::out_of_range("Index out of range");
-		}
 		return this->at(index);
 	}
 
