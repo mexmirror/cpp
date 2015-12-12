@@ -12,11 +12,12 @@ class indexableSet
 	using Base=std::set<T,COMPARE>;
 
 public:
-	using size_type=typename Base::size_type;
+	using size_type=int;
 	using Base::set;
 
-	T const & at(int index) const {
-		if(this->size() < std::abs(index)) {
+	T const & at(size_type index) const {
+		long int size = static_cast<long int>(this->size());
+		if(-size-1 >= index || index > size) {
 			throw std::out_of_range("Index out of range");
 		}
 		auto it = this->begin();
@@ -38,7 +39,6 @@ public:
 	const T & back() const {
 		return this->at(-1);
 	}
-
 };
 
 struct caselessCompare{

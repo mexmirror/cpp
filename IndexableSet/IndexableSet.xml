@@ -7,6 +7,6 @@
 		<testcase classname="AllTests" name="testIndexAccess"/>
 		<testcase classname="AllTests" name="testOutOfRange"/>
 		<testcase classname="AllTests" name="testNegativeOutOfRange"/>
-		<testcase classname="AllTests" name="testNegativeIndex"/>
+		<testcase classname="AllTests" name="testNegativeIndexAccess"/>
 	</testsuite>
 </testsuites>
