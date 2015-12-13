@@ -37,6 +37,15 @@ void testNegativeOutOfRange(){
 	ASSERT_THROWS(set[-4], std::out_of_range);
 }
 
+void testEdgeCasePositive() {
+	indexableSet<int> set {1,2,3,5,8,13};
+	ASSERT_EQUAL(13, set[5]);
+}
+
+void testEdgeCaseNegative() {
+	indexableSet<int> set {1,2,3,5,8,13};
+	ASSERT_EQUAL(1, set[-6]);
+}
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(testIndexableSet));
@@ -47,6 +56,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testOutOfRange));
 	s.push_back(CUTE(testNegativeOutOfRange));
 	s.push_back(CUTE(testNegativeIndexAccess));
+	s.push_back(CUTE(testEdgeCasePositive));
+	s.push_back(CUTE(testEdgeCaseNegative));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
